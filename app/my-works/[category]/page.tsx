@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { categories } from "@/lib/categories";
+import { ImageModal } from "@/components/ui/ImageModal";
 
 type PageProps = {
   params: Promise<{ category: string }>;
@@ -12,12 +14,35 @@ export default async function CategoryPage({ params }: PageProps) {
 
   if (!data) notFound();
 
+  // Prepare images array for the modal component
+  const images = [1, 2, 3, 4, 5, 6].map((i) => ({
+    src: `/my-works/${data.slug}/${i}.jpg`,
+    alt: `${data.label} Project ${i}`,
+  }));
+
   return (
-    <section className="min-h-screen py-20 px-4">
-      <div className="max-w-6xl mx-auto">
+    <section className="relative min-h-screen py-20 px-4 overflow-hidden ">
+      {/* Background Image */}
+      <Image
+        src="/background _white.png"
+        alt=""
+        fill
+        className="object-cover"
+        sizes="100vw"
+        quality={100}
+      />
+
+      {/* Gradient overlays */}
+      <div className="absolute top-0 left-0 right-0 h-[20px] bg-linear-to-b from-black via-black/10 to-transparent z-1" />
+      <div className="absolute bottom-0 left-0 right-0 h-[20px] bg-linear-to-t from-black via-black/10 to-transparent z-1" />
+      <div className="absolute top-0 left-0 bottom-0 w-[20px] bg-linear-to-r from-black via-black/10 to-transparent z-1" />
+      <div className="absolute top-0 right-0 bottom-0 w-[20px] bg-linear-to-l from-black via-black/10 to-transparent z-1" />
+
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto pt-16">
         <Link
           href="/#my-works"
-          className="inline-flex items-center gap-2 text-foreground/70 hover:text-foreground mb-8 transition-colors"
+          className="inline-flex items-center gap-2 text-black/70 hover:text-black transition-colors"
         >
           <svg
             className="w-4 h-4"
@@ -35,22 +60,23 @@ export default async function CategoryPage({ params }: PageProps) {
           Back to My Works
         </Link>
 
-        <h1 className="font-dancing text-4xl md:text-5xl mb-4">{data.label}</h1>
-        <p className="text-foreground/70 mb-12">
-          Explore my {data.label.toLowerCase()} projects
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Placeholder for project cards */}
-          {[1, 2, 3, 4, 5, 6].map((i) => (
-            <div
-              key={i}
-              className="aspect-video bg-foreground/5 rounded-lg border border-foreground/10 flex items-center justify-center"
+        {/* Title with logo style and category color - centered */}
+        <div className="flex justify-center mt-8 mb-14">
+          <div className="relative inline-block">
+            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-black">
+              {data.label}
+            </span>
+            <span
+              className="absolute -right-15 sm:-right-20 md:-right-30 -bottom-4 sm:-bottom-4 md:-bottom-6 font-dancing text-2xl sm:text-3xl md:text-4xl lg:text-5xl"
+              style={{ color: data.color }}
             >
-              <span className="text-foreground/30">Project {i}</span>
-            </div>
-          ))}
+              {data.accentLabel}
+            </span>
+          </div>
         </div>
+
+        {/* Image Grid with Modal */}
+        <ImageModal images={images} categoryColor={data.color} />
       </div>
     </section>
   );
@@ -64,6 +90,8 @@ export async function generateMetadata({ params }: PageProps) {
   const { category } = await params;
   const data = categories.find((c) => c.slug === category);
   return {
-    title: data ? `${data.label} | abdell design` : "My Works",
+    title: data
+      ? `${data.label} ${data.accentLabel} | abdell design`
+      : "My Works",
   };
 }

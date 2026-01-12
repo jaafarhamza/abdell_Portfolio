@@ -33,10 +33,10 @@ export function ProfileSection() {
         className="absolute z-10
           bottom-0 right-1/2 translate-x-1/2 h-[70vh]
           sm:right-1/4 sm:translate-x-1/2 sm:h-[65vh]
-          md:right-[-22%] md:translate-x-0 md:h-[70vh]
-          lg:right-[-20%] lg:h-[90vh]
-          xl:right-[-13%] xl:h-screen
-          2xl:right-[10%] "
+          md:right-[-22%] md:translate-x-0 md:h-[65vh]
+          lg:right-[-20%] lg:h-[75vh]
+          xl:right-[-20%] xl:h-[90vh]
+          2xl:right-[1%]"
       >
         <Image
           src="/profile/person.png"
@@ -55,11 +55,11 @@ export function ProfileSection() {
       <div
         className="absolute z-20
           bottom-[50%] left-[60%] -translate-x-1/2 h-[55vh]
-          sm:bottom-[20%] sm:left-[40%] sm:-translate-x-1/2 sm:h-[70vh]
+          sm:bottom-[30%] sm:left-[45%] sm:-translate-x-1/2 sm:h-[70vh]
           md:bottom-[30%] md:left-[0%] md:translate-x-0 md:h-[70vh]
           lg:bottom-[25%] lg:left-[0%] lg:h-[80vh]
-          xl:bottom-[-15%] xl:left-[0%] xl:h-[110vh]
-          2xl:left-[10%] 2xl:h-[110vh]"
+          xl:bottom-[-5%] xl:left-[0%] xl:h-screen
+          "
       >
         <Image
           src="/profile/person_information.png"

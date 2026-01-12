@@ -199,7 +199,7 @@ export function BeforeAfterSection() {
   return (
     <section
       id="before-after"
-      className="min-h-screen flex items-center justify-center px-12 py-16 bg-black"
+      className="min-h-screen flex items-center justify-center md:px-12 md:py-20 bg-black"
     >
       <div className="w-full max-w-full">
         {/* Header with Navigation */}
@@ -231,14 +231,16 @@ export function BeforeAfterSection() {
           </button>
 
           {/* Title */}
-          <div className="relative text-center">
-            <span className="  text-xl md:text-4xl font-bold tracking-wide">
-              before
-            </span>
-            <span className=" absolute -right-2 bottom-2 font-dancing text-2xl md:text-4xl self-end -mt-6 -mr-7 text-blue-600">
-              after
-            </span>
-            <p className="text-white/60 text-sm">
+          <div className="relative text-center flex flex-col items-center">
+            <div className="relative inline-block mb-2">
+              <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-white">
+                before
+              </span>
+              <span className="absolute -right-6 sm:-right-8 -bottom-2 sm:-bottom-4 font-dancing text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-500">
+                after
+              </span>
+            </div>
+            <p className="text-white/60 text-sm mt-4">
               {currentIndex + 1} / {comparisons.length}
             </p>
           </div>

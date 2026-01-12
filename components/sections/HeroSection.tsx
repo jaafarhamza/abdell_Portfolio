@@ -88,7 +88,7 @@ export function HeroSection() {
       </div>
 
       {/* Pen tool variant - bottom right area */}
-      <div className="absolute bottom-[30%] right-[12%] sm:right-[18%] opacity-30 animate-float-1 animate-pulse-glow">
+      <div className="absolute bottom-[10%] right-[12%] sm:right-[18%] opacity-30 animate-float-1 animate-pulse-glow">
         <Image
           src="/HeroSection/icons/pen-tool (1).png"
           alt=""
@@ -99,17 +99,17 @@ export function HeroSection() {
       </div>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black -z-10" />
+      <div className="absolute inset-0  -z-10" />
 
       {/* Left Vertical Toolbar */}
-      <div className="absolute sm:-left-14 -left-12 xl:-left-26 md:-left-12 lg:-left-14 xl:top-4 lg:top-4 h-full w-auto  md:block -rotate-3 opacity-50 ">
+      <div className="absolute sm:-left-14 -left-12 xl:-left-26 md:-left-12 lg:-left-14 xl:top-4 lg:top-4 h-full w-auto  md:block -rotate-3 opacity-60 ">
         <div className="relative h-full w-[160px] lg:w-[320px] xl:w-90 sm:w-60">
           <Image
             src="/HeroSection/vertical_tool.png"
             alt=""
             fill
             className="object-contain object-left"
-            sizes="80px"
+            // sizes="80px"
             priority
           />
         </div>
