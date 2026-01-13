@@ -5,21 +5,21 @@ export function NavLinks({ onClick }: { onClick?: () => void }) {
   return (
     <>
       <Link
-        href="#home"
+        href="/#home"
         onClick={onClick}
         className="hover:text-foreground/70 transition-colors"
       >
         Home
       </Link>
       <Link
-        href="#profile"
+        href="/#profile"
         onClick={onClick}
         className="hover:text-foreground/70 transition-colors"
       >
         Profile
       </Link>
       <Link
-        href="#before-after"
+        href="/#before-after"
         onClick={onClick}
         className="hover:text-foreground/70 transition-colors"
       >
@@ -27,14 +27,14 @@ export function NavLinks({ onClick }: { onClick?: () => void }) {
       </Link>
       <WorksDropdown />
       <Link
-        href="#our-clients"
+        href="/#our-clients"
         onClick={onClick}
         className="hover:text-foreground/70 transition-colors"
       >
         Our Clients
       </Link>
       <Link
-        href="#contact"
+        href="/#contact"
         onClick={onClick}
         className="hover:text-foreground/70 transition-colors"
       >

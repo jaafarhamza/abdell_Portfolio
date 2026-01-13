@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import type { Category } from "@/lib/categories";
 
@@ -12,6 +13,14 @@ export function WorksFilter({ categories }: Props) {
   const [activeFilter, setActiveFilter] = useState<string>("all");
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedAlt, setSelectedAlt] = useState<string>("");
+  const mountedRef = useRef(false);
+
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+    };
+  }, []);
 
   const filteredCategories =
     activeFilter === "all"
@@ -27,6 +36,31 @@ export function WorksFilter({ categories }: Props) {
     setSelectedImage(null);
     setSelectedAlt("");
   };
+
+  // Block body scroll when modal is open
+  useEffect(() => {
+    if (selectedImage) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [selectedImage]);
+
+  // Close on Escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && selectedImage) {
+        closeModal();
+      }
+    };
+
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [selectedImage]);
 
   return (
     <>
@@ -148,51 +182,64 @@ export function WorksFilter({ categories }: Props) {
         ))}
       </div>
 
-      {/* Modal */}
-      {selectedImage && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 cursor-pointer"
-          onClick={closeModal}
-        >
-          {/* Backdrop with blur */}
-          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
-
-          {/* Close button */}
-          <button
-            className="absolute top-4 right-4 z-10 text-white/80 hover:text-white transition-colors"
+      {/* Modal - Rendered via Portal */}
+      {typeof window !== "undefined" &&
+        selectedImage &&
+        createPortal(
+          <div
+            className="fixed inset-0 z-9999 flex items-center justify-center p-4 animate-in fade-in duration-200"
+            style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0 }}
             onClick={closeModal}
           >
-            <svg
-              className="w-8 h-8"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
+            {/* Backdrop with blur - blocks scrolling */}
+            <div className="absolute inset-0 bg-black/90 backdrop-blur-md" />
 
-          {/* Image container */}
-          <div
-            className="relative z-10 max-w-5xl max-h-[90vh] w-full h-full cursor-default rounded-2xl overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Image
-              src={selectedImage}
-              alt={selectedAlt}
-              fill
-              className="object-contain"
-              sizes="100vw"
-              priority
-            />
-          </div>
-        </div>
-      )}
+            {/* Close button - Enhanced styling */}
+            <button
+              className="absolute top-4 right-4 z-10000 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-200 hover:rotate-90"
+              onClick={closeModal}
+              aria-label="Close modal"
+            >
+              <svg
+                className="w-6 h-6 sm:w-8 sm:h-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+
+            {/* Image container - Rounded with shadow */}
+            <div
+              className="relative z-10 max-w-6xl w-full"
+              style={{ maxHeight: "85vh" }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black/50">
+                <Image
+                  src={selectedImage}
+                  alt={selectedAlt}
+                  fill
+                  className="object-contain rounded-2xl"
+                  sizes="(max-width: 768px) 100vw, 90vw"
+                  priority
+                />
+              </div>
+            </div>
+
+            {/* Hint text */}
+            <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/60 text-sm z-10">
+              Click outside or press ESC to close
+            </p>
+          </div>,
+          document.body
+        )}
     </>
   );
 }

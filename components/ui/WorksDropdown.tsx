@@ -49,7 +49,7 @@ export function WorksDropdown() {
       {isOpen && (
         <div className="absolute top-full left-0 mt-2 py-2 w-48 bg-black/90 backdrop-blur-md rounded-lg border border-white/10 shadow-xl z-50">
           <Link
-            href="#my-works"
+            href="/#my-works"
             className="block px-4 py-2 hover:bg-white/10 transition-colors"
             onClick={() => setIsOpen(false)}
           >
