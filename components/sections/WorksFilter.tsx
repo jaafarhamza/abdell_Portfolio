@@ -114,7 +114,7 @@ export function WorksFilter({ categories }: Props) {
                 fill
                 className="object-cover"
                 sizes="100vw"
-                quality={90}
+                quality={75}
               />
               {/* Gradient overlays */}
               <div className="absolute inset-0 bg-linear-to-b from-black/10 via-transparent to-black/10" />
@@ -129,7 +129,7 @@ export function WorksFilter({ categories }: Props) {
                   {cat.label}
                 </span>
                 <span
-                  className="absolute -right-15 sm:-right-20 md:-right-30 -bottom-3 sm:-bottom-4 md:-bottom-6 font-dancing text-2xl sm:text-3xl md:text-5xl"
+                  className="absolute font-medium -right-8 sm:-right-10 md:-right-15 lg:-right-25 -bottom-4 sm:-bottom-6 md:-bottom-8 lg:-bottom-10 font-dancing text-2xl sm:text-3xl md:text-4xl lg:text-6xl"
                   style={{ color: cat.color }}
                 >
                   {cat.accentLabel}

@@ -36,7 +36,7 @@ export async function sendContactEmail(
   try {
     // Send email using Resend
     const { error } = await resend.emails.send({
-      from: "Abdell Portfolio Contact <onboarding@resend.dev>",
+      from: "Abdell Portfolio Contact <contact@yourdomain.com>", // Replace with your verified domain
       to: process.env.CONTACT_EMAIL!,
       replyTo: email,
       subject: `New Contact from ${name}`,

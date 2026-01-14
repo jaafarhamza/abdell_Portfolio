@@ -67,14 +67,14 @@ export function ContactForm() {
 
       {/* Error Message */}
       {state?.error && (
-        <div className="p-4 bg-red-500/10 border border-red-500/50 rounded-lg">
+        <div className="p-4 bg-red-500/10 border border-red-500/50 rounded-3xl">
           <p className="text-red-400 text-sm">{state.error}</p>
         </div>
       )}
 
       {/* Success Message */}
       {state?.success && (
-        <div className="p-4 bg-green-500/10 border border-green-500/50 rounded-lg">
+        <div className="p-4 bg-green-500/10 border border-green-500/50 rounded-3xl">
           <p className="text-green-400 text-sm">{state.message}</p>
         </div>
       )}
@@ -83,7 +83,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={pending}
-        className="w-full px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        className="w-full px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-3xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
       >
         {pending ? (
           <>

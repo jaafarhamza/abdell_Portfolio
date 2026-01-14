@@ -4,7 +4,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pb-16"
+      className="relative min-h-150 md:min-h-screen flex items-center justify-center overflow-hidden "
     >
       {/* Background Image */}
       <Image
@@ -14,7 +14,7 @@ export function HeroSection() {
         priority
         className="object-cover"
         sizes="100vw"
-        quality={100}
+        quality={75}
       />
 
       {/* Color Blur Effects */}
@@ -109,7 +109,7 @@ export function HeroSection() {
             alt=""
             fill
             className="object-contain object-left"
-            // sizes="80px"
+            sizes="(max-width: 640px) 160px, (max-width: 1024px) 240px, 320px"
             priority
           />
         </div>
@@ -178,6 +178,7 @@ export function HeroSection() {
                     alt="Hand holding light"
                     width={500}
                     height={500}
+                    sizes="(max-width: 640px) 54px, (max-width: 768px) 68px, (max-width: 1024px) 92px, (max-width: 1280px) 125px, 195px"
                     className="absolute z-10 pointer-events-none -translate-x-1/2 -translate-y-[45%]
                       w-[54px] left-[58%] top-[82%]
                       sm:w-[68px] sm:left-[64%] sm:top-[80%]
@@ -219,7 +220,7 @@ export function HeroSection() {
       </div>
 
       {/* Bottom Horizontal Toolbar */}
-      <div className="absolute bottom-82 sm:bottom-78 xl:bottom-45 lg:bottom-60 md:bottom-70 md:w-sm w-70 sm:w-sm lg:w-full h-auto">
+      <div className="absolute bottom-40 sm:bottom-40 xl:bottom-45 lg:bottom-60 md:bottom-70 md:w-sm w-70 sm:w-sm lg:w-full h-auto">
         <div className="relative w-full h-[50px] xl:h-[70px]">
           <Image
             src="/HeroSection/horizontal_tool.png"

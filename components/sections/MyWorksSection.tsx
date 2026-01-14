@@ -7,9 +7,9 @@ export function MyWorksSection() {
       <div className="max-w-6xl mx-auto mb-8 text-center">
         <div className="relative inline-block">
           <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-white">
-            my
+            My
           </span>
-          <span className="absolute -right-10 sm:-right-14 -bottom-2 sm:-bottom-2 font-dancing text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-500">
+          <span className="absolute -right-6 sm:-right-8 md:-right-14 -bottom-2 sm:-bottom-2 md:-bottom-4 font-dancing text-2xl sm:text-3xl md:text-5xl lg:text-5xl font-semibold text-red-500">
             works
           </span>
         </div>

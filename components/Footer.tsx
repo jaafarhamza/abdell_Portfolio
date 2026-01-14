@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { contactInfo } from "@/lib/contact-info";
 
 export function Footer() {
   return (
@@ -9,15 +10,15 @@ export function Footer() {
         alt=""
         fill
         className="object-cover"
-        sizes="100vh"
-        quality={100}
+        sizes="100vw"
+        quality={75}
       />
 
       {/* Content */}
       <div className="relative z-10 max-w-full mx-auto flex flex-col items-center">
         {/* Let's work together with arrow */}
         <div className="relative inline-block mb-20">
-          <p className="font-dancing text-2xl sm:text-3xl md:text-5xl text-red-500">
+          <p className="font-dancing font-semibold text-4xl sm:text-5xl md:text-5xl lg:text-7xl text-red-500">
             Let&apos;s work together
           </p>
           <Image
@@ -25,7 +26,7 @@ export function Footer() {
             alt=""
             width={100}
             height={100}
-            className="absolute -bottom-8 right-0 sm:-bottom-5 md:-bottom-8 w-[30px] h-[30px] sm:w-[60px] sm:h-[20px] md:w-[120px] md:h-[20px]"
+            className="absolute -bottom-8 right-0 sm:-bottom-5 md:-bottom-8 w-[60px] h-[30px] sm:w-[60px] sm:h-[20px] md:w-[120px] md:h-[20px]"
           />
         </div>
 
@@ -99,6 +100,85 @@ export function Footer() {
           <p className="text-foreground/60 text-xs sm:text-sm md:text-2xl xl:text-4xl">
             Feel free to send me a message here to get started.
           </p>
+        </div>
+
+        {/* Contact Information */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 md:gap-12 mt-8 mb-8">
+          {/* WhatsApp */}
+          <a
+            href={`https://wa.me/${contactInfo.whatsapp.phone.replace(/[^0-9]/g, "")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 group hover:scale-105 transition-transform"
+          >
+            <div className="p-2 bg-green-600 rounded-lg group-hover:bg-green-700 transition-colors">
+              <Image
+                src="/contact/whatsapp.svg"
+                alt="WhatsApp"
+                width={24}
+                height={24}
+                className="w-5 h-5 sm:w-6 sm:h-6"
+              />
+            </div>
+            <div className="text-left">
+              <p className="text-foreground/60 text-xs">
+                {contactInfo.whatsapp.label}
+              </p>
+              <p className="text-foreground text-sm sm:text-base font-medium group-hover:text-green-400 transition-colors">
+                {contactInfo.whatsapp.displayPhone}
+              </p>
+            </div>
+          </a>
+
+          {/* Drive */}
+          <a
+            href={contactInfo.drive.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 group hover:scale-105 transition-transform"
+          >
+            <div className="p-2 bg-blue-600 rounded-lg group-hover:bg-blue-700 transition-colors">
+              <Image
+                src="/contact/drive.svg"
+                alt="Drive"
+                width={24}
+                height={24}
+                className="w-5 h-5 sm:w-6 sm:h-6"
+              />
+            </div>
+            <div className="text-left">
+              <p className="text-foreground/60 text-xs">
+                {contactInfo.drive.label}
+              </p>
+              <p className="text-foreground text-sm sm:text-base font-medium truncate max-w-[200px] group-hover:text-blue-400 transition-colors">
+                {contactInfo.drive.displayUrl}
+              </p>
+            </div>
+          </a>
+
+          {/* Email */}
+          <a
+            href={`mailto:${contactInfo.email.address}`}
+            className="flex items-center gap-3 group hover:scale-105 transition-transform"
+          >
+            <div className="p-2 bg-red-600 rounded-lg group-hover:bg-red-700 transition-colors">
+              <Image
+                src="/contact/gmail.svg"
+                alt="Email"
+                width={24}
+                height={24}
+                className="w-5 h-5 sm:w-6 sm:h-6"
+              />
+            </div>
+            <div className="text-left">
+              <p className="text-foreground/60 text-xs">
+                {contactInfo.email.label}
+              </p>
+              <p className="text-foreground text-sm sm:text-base font-medium truncate max-w-[200px] group-hover:text-red-400 transition-colors">
+                {contactInfo.email.displayAddress}
+              </p>
+            </div>
+          </a>
         </div>
 
         {/* Copyright */}

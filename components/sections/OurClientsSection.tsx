@@ -7,10 +7,10 @@ export function OurClientsSection() {
       {/* Title */}
       <div className="text-center mb-12 sm:mb-16">
         <div className="relative inline-block mb-4">
-          <span className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-wide text-white">
-            our
+          <span className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-wide text-white">
+            My
           </span>
-          <span className="absolute -right-10 sm:-right-16 -bottom-2 sm:-bottom-3 font-dancing text-2xl sm:text-3xl md:text-4xl text-blue-500">
+          <span className="absolute -right-6 sm:-right-8 md:-right-12  -bottom-3 sm:-bottom-3 font-dancing text-2xl sm:text-3xl md:text-5xl font-semibold text-red-500">
             clients
           </span>
         </div>

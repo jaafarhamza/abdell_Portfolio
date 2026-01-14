@@ -199,7 +199,7 @@ export function BeforeAfterSection() {
   return (
     <section
       id="before-after"
-      className="min-h-screen flex items-center justify-center md:px-12 md:py-20 bg-black"
+      className="min-h-160 md:min-h-screen flex items-center justify-center md:px-12 md:py-20 bg-black"
     >
       <div className="w-full max-w-full">
         {/* Header with Navigation */}
@@ -236,7 +236,7 @@ export function BeforeAfterSection() {
               <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-white">
                 before
               </span>
-              <span className="absolute -right-6 sm:-right-8 -bottom-2 sm:-bottom-4 font-dancing text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-500">
+              <span className="absolute -right-3 sm:-right-4 -bottom-2 sm:-bottom-2 md:-bottom-6 lg:-bottom-8 font-dancing font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-red-500">
                 after
               </span>
             </div>

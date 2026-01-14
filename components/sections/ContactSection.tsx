@@ -13,9 +13,9 @@ export function ContactSection() {
         <div className="text-center mb-12">
           <div className="relative inline-block mb-6">
             <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-white">
-              contact
+              Contact
             </span>
-            <span className="absolute -right-1 sm:-right-1 -bottom-2 sm:-bottom-2 font-dancing text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-500">
+            <span className="absolute -right-1 sm:-right-1 -bottom-2 sm:-bottom-6  md:-bottom-6 font-dancing text-4xl sm:text-6xl md:text-6xl lg:text-7xl font-semibold text-red-500">
               me
             </span>
           </div>

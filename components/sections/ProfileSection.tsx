@@ -8,9 +8,10 @@ export function ProfileSection() {
         src="/background _white.png"
         alt=""
         fill
+        loading="eager"
         className="object-cover"
         sizes="100vw"
-        quality={100}
+        quality={75}
       />
 
       {/* Black gradient shadow - top */}

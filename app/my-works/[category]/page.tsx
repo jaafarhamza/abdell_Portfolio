@@ -63,11 +63,11 @@ export default async function CategoryPage({ params }: PageProps) {
         {/* Title with logo style and category color - centered */}
         <div className="flex justify-center mt-8 mb-14">
           <div className="relative inline-block">
-            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-black">
+            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold tracking-wide text-black">
               {data.label}
             </span>
             <span
-              className="absolute -right-15 sm:-right-20 md:-right-30 -bottom-4 sm:-bottom-4 md:-bottom-6 font-dancing text-2xl sm:text-3xl md:text-4xl lg:text-5xl"
+              className="absolute font-medium -right-8 sm:-right-10 md:-right-15 lg:-right-25 -bottom-4 sm:-bottom-6 md:-bottom-8 lg:-bottom-10 font-dancing text-2xl sm:text-3xl md:text-4xl lg:text-6xl"
               style={{ color: data.color }}
             >
               {data.accentLabel}

@@ -1,7 +1,7 @@
 export const categories = [
   {
     slug: "crypto",
-    label: "Crypto",
+    label: "Crypto style",
     accentLabel: "Thumbnail",
     color: "#f59e0b",
   }, // amber

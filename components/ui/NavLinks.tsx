@@ -31,7 +31,7 @@ export function NavLinks({ onClick }: { onClick?: () => void }) {
         onClick={onClick}
         className="hover:text-foreground/70 transition-colors"
       >
-        Our Clients
+        My Clients
       </Link>
       <Link
         href="/#contact"
