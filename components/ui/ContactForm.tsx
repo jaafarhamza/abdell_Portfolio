@@ -1,13 +1,49 @@
 "use client";
 
-import { useActionState } from "react";
-import { sendContactEmail } from "@/app/actions/contact";
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 export function ContactForm() {
-  const [state, formAction, pending] = useActionState(sendContactEmail, null);
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+  const [message, setMessage] = useState("");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("loading");
+    setMessage("");
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          from_name: formData.get("name") as string,
+          from_email: formData.get("email") as string,
+          message: formData.get("message") as string,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
+
+      setStatus("success");
+      setMessage("Message sent successfully! I'll get back to you soon.");
+      form.reset();
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      setStatus("error");
+      setMessage("Failed to send message. Please try again.");
+    }
+  }
 
   return (
-    <form action={formAction} className="w-full max-w-2xl mx-auto space-y-6">
+    <form
+      onSubmit={handleSubmit}
+      className="w-full max-w-2xl mx-auto space-y-6"
+    >
       {/* Name Input */}
       <div>
         <label
@@ -21,7 +57,7 @@ export function ContactForm() {
           id="name"
           name="name"
           required
-          disabled={pending}
+          disabled={status === "loading"}
           className="w-full px-4 py-3 bg-blue-900/10 border border-white/20 rounded-3xl text-white placeholder-white/40 focus:outline-none focus:border-blue-800/50 focus:ring-1 focus:ring-blue-800/50 transition-colors disabled:opacity-50"
           placeholder="Your name"
         />
@@ -40,7 +76,7 @@ export function ContactForm() {
           id="email"
           name="email"
           required
-          disabled={pending}
+          disabled={status === "loading"}
           className="w-full px-4 py-3 bg-blue-900/10 border border-white/20 rounded-3xl text-white placeholder-white/40 focus:outline-none focus:border-blue-800/50 focus:ring-1 focus:ring-blue-800/50 transition-colors disabled:opacity-50"
           placeholder="your.email@example.com"
         />
@@ -58,7 +94,7 @@ export function ContactForm() {
           id="message"
           name="message"
           required
-          disabled={pending}
+          disabled={status === "loading"}
           rows={6}
           className="w-full px-4 py-3 bg-blue-900/10 border border-white/20 rounded-3xl text-white placeholder-white/40 focus:outline-none focus:border-blue-800/50 focus:ring-1 focus:ring-blue-800/50 transition-colors disabled:opacity-50"
           placeholder="Tell me about your project..."
@@ -66,26 +102,26 @@ export function ContactForm() {
       </div>
 
       {/* Error Message */}
-      {state?.error && (
+      {status === "error" && (
         <div className="p-4 bg-red-500/10 border border-red-500/50 rounded-3xl">
-          <p className="text-red-400 text-sm">{state.error}</p>
+          <p className="text-red-400 text-sm">{message}</p>
         </div>
       )}
 
       {/* Success Message */}
-      {state?.success && (
+      {status === "success" && (
         <div className="p-4 bg-green-500/10 border border-green-500/50 rounded-3xl">
-          <p className="text-green-400 text-sm">{state.message}</p>
+          <p className="text-green-400 text-sm">{message}</p>
         </div>
       )}
 
       {/* Submit Button */}
       <button
         type="submit"
-        disabled={pending}
+        disabled={status === "loading"}
         className="w-full px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-3xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
       >
-        {pending ? (
+        {status === "loading" ? (
           <>
             <svg
               className="animate-spin h-5 w-5"

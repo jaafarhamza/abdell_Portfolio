@@ -130,32 +130,6 @@ export function Footer() {
             </div>
           </a>
 
-          {/* Drive */}
-          <a
-            href={contactInfo.drive.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-3 group hover:scale-105 transition-transform"
-          >
-            <div className="p-2 bg-blue-600 rounded-lg group-hover:bg-blue-700 transition-colors">
-              <Image
-                src="/contact/drive.svg"
-                alt="Drive"
-                width={24}
-                height={24}
-                className="w-5 h-5 sm:w-6 sm:h-6"
-              />
-            </div>
-            <div className="text-left">
-              <p className="text-foreground/60 text-xs">
-                {contactInfo.drive.label}
-              </p>
-              <p className="text-foreground text-sm sm:text-base font-medium truncate max-w-[200px] group-hover:text-blue-400 transition-colors">
-                {contactInfo.drive.displayUrl}
-              </p>
-            </div>
-          </a>
-
           {/* Email */}
           <a
             href={`mailto:${contactInfo.email.address}`}

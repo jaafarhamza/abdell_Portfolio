@@ -82,29 +82,62 @@ function ImageComparisonSlider({
     setSliderPosition(percentage);
   }, []);
 
-  const handlePointerDown = (e: React.PointerEvent) => {
-    setIsDragging(true);
-    handleMove(e.clientX);
-    (e.target as HTMLElement).setPointerCapture(e.pointerId);
-  };
+  // Mouse/Touch handlers
+  const handleStart = useCallback(
+    (clientX: number) => {
+      setIsDragging(true);
+      handleMove(clientX);
+    },
+    [handleMove]
+  );
 
-  const handlePointerMove = (e: React.PointerEvent) => {
-    if (!isDragging) return;
-    handleMove(e.clientX);
-  };
-
-  const handlePointerUp = () => {
+  const handleEnd = useCallback(() => {
     setIsDragging(false);
+  }, []);
+
+  // Mouse events
+  const handleMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault();
+    handleStart(e.clientX);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    handleMove(e.clientX);
+  };
+
+  const handleMouseUp = () => {
+    handleEnd();
+  };
+
+  // Touch events
+  const handleTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault();
+    handleStart(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    handleMove(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    handleEnd();
   };
 
   return (
     <div
       ref={containerRef}
-      className="relative w-full aspect-video rounded-lg overflow-hidden cursor-ew-resize select-none"
-      onPointerDown={handlePointerDown}
-      onPointerMove={handlePointerMove}
-      onPointerUp={handlePointerUp}
-      onPointerLeave={handlePointerUp}
+      className="relative w-full aspect-video rounded-lg overflow-hidden cursor-ew-resize select-none touch-none"
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseUp}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       {/* After Image (Background) */}
       <div className="absolute inset-0">

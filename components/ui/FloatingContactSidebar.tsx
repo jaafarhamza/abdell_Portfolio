@@ -25,15 +25,6 @@ const contactItems: ContactItem[] = [
     hoverColor: "hover:bg-green-700",
   },
   {
-    id: "drive",
-    icon: "/contact/drive.svg",
-    label: contactInfo.drive.label,
-    value: contactInfo.drive.url,
-    displayValue: contactInfo.drive.displayUrl,
-    bgColor: "bg-blue-600",
-    hoverColor: "hover:bg-blue-700",
-  },
-  {
     id: "email",
     icon: "/contact/gmail.svg",
     label: contactInfo.email.label,

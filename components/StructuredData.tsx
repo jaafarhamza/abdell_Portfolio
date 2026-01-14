@@ -5,9 +5,9 @@ export function StructuredData() {
     name: "Abdell Design",
     description:
       "Professional thumbnail designer specializing in crypto, trading, lifestyle, and podcast thumbnails for YouTube creators",
-    url: "https://yourwebsite.com",
-    logo: "https://yourwebsite.com/logo.png",
-    image: "https://yourwebsite.com/og-image.jpg",
+    url: "https://abdelldesign.vercel.app",
+    logo: "https://abdelldesign.vercel.app/logo.png",
+    image: "https://abdelldesign.vercel.app/og-image.jpg",
     telephone: "+212644157042", // Replace with your actual phone
     email: "abdelldesign2001@gmail.com", // Replace with your actual email
     address: {
@@ -33,8 +33,8 @@ export function StructuredData() {
     jobTitle: "Professional Thumbnail Designer",
     description:
       "Experienced thumbnail designer helping YouTube creators increase their click-through rates",
-    url: "https://yourwebsite.com",
-    image: "https://yourwebsite.com/profile-image.jpg",
+    url: "https://abdelldesign.vercel.app",
+    image: "https://abdelldesign.vercel.app/profile-image.jpg",
     sameAs: [
       "https://twitter.com/yourhandle",
     ],
@@ -51,12 +51,12 @@ export function StructuredData() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Abdell Design",
-    url: "https://yourwebsite.com",
+    url: "https://abdelldesign.vercel.app",
     description:
       "Professional thumbnail design portfolio showcasing work for YouTube creators",
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://yourwebsite.com/search?q={search_term_string}",
+      target: "https://abdelldesign.vercel.app/search?q={search_term_string}",
       "query-input": "required name=search_term_string",
     },
   };

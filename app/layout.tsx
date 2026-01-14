@@ -29,7 +29,7 @@ const mellenya = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://yourwebsite.com"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://abdelldesign.vercel.app"
   ),
   title: {
     default: "Abdell Design | Professional Thumbnail Designer",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     "thumbnail design service",
     "youtube image",
   ],
-  authors: [{ name: "Abdell", url: "https://yourwebsite.com" }],
+  authors: [{ name: "Abdell", url: "https://abdelldesign.vercel.app" }],
   creator: "Abdell Design",
   publisher: "Abdell Design",
   formatDetection: {
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://yourwebsite.com",
+    url: "https://abdelldesign.vercel.app",
     title: "Abdell Design | Professional Thumbnail Designer",
     description:
       "Professional thumbnail designer specializing in crypto, trading, lifestyle, and podcast thumbnails for YouTube creators",
@@ -100,7 +100,7 @@ export const metadata: Metadata = {
     google: "your-google-verification-code",
   },
   alternates: {
-    canonical: "https://yourwebsite.com",
+    canonical: "https://abdelldesign.vercel.app",
   },
 };
 
