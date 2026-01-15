@@ -97,7 +97,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code",
+    google: "google-site-verification=VJt8bv9rE5APhrdmmm8ry4sZeGDUktyNnxI4fmyYCbo",
   },
   alternates: {
     canonical: "https://abdelldesign.vercel.app",
